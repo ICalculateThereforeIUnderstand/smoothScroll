@@ -1,0 +1,74 @@
+
+#prva {
+    height: 100vh;
+    width: 100vw;
+    /*background-color: yellow;*/
+    position: relative;
+    background: linear-gradient(#fff, #ffff7a);
+}
+
+#druga {
+    height: 100vh;
+    width: 100vw;
+    /*background-color: red;*/
+    background: linear-gradient(#ff7a7a, #fff);
+}
+
+#treca {
+    height: 100vh;
+    width: 100vw;
+    /*background-color: blue;*/
+    position: relative;
+    background: linear-gradient(#fff, #80bfff);
+}
+
+#cetvrta {
+    height: 100vh;
+    width: 100vw;
+    /*background-color: green;*/
+    position: relative;
+    background: linear-gradient(#88ff82, #fff);
+}
+
+#natpis {
+    position: absolute;
+    top: 200px;
+    left: 300px;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+#klik1, #klik2, #klik3, #klik4 {
+    height: 40px;
+    width: 40px;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+
+#klik1:hover, #klik2:hover, #klik3:hover, #klik4:hover {
+    background-color: #65ff4a;
+    cursor: pointer;
+}
+
+#objekt {
+    position: absolute;
+    top: 200px;
+    left: 40%;
+    background-color: blue;
+    height: 70px;
+    width: 70px;
+}
+
+#klik2 {
+    height: 40px;
+    width: 40px;
+    background-color: green;
+    position: absolute;
+    top: 150px;
+    left: 40%;
+}
