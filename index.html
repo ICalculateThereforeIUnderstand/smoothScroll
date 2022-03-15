@@ -29,11 +29,33 @@
 		</div>
 		<div id="objekt">
 		</div>
+		<p class="tekst">This is demo site for my smooth-scrolling library, which is very lightweight and consists of 2 files with total size of 9.8kB. Main purpose of it is to enable smooth customizable scrolling within internet page. It enables author to define speed and pattern of scrolling. I have decided to do this project, because previously, couple of times I ran upon problem of building sites with smooth scrolls and this is not possible to do without external library. Usually people are using jQuery, but I dont like that solution because then you need external jQuery dependency and it is not convenient if that is only use of jQuery on your site. Plus jQuery is really old technology and is in process of dying, so I try not to use it. Also this was very good opportunity to improve my knowledge of bezier curves beyond level of entering parameters in bezier curve generators and getting good enough result.
+This is how it works. Suppose we have button with id of "gumb". It does not need to be real button, it can be any html element (perhaps div). Suppose we also have div element with class "cl", and it is down the page. Suppose we want our scroll to last for 700msec and to be of "ease-in-out" pattern (moves slowly at first, then accelerates, and at the end it slows down again). With my library, this can be easily accomplished with only two lines of code:
+<br><br>import Skrol from "./skrol.js";
+<br>let scb = new Skrol("#gumb", ".cl", "ease-in-out", "800msec");
+		</p>
+		<p class="tekst1">
+			<br>As we can see, first argument is css-selector of button which starts scroll, second argument is css-selector of target element, third defines pattern and forth speed of scroll. Pattern is defined by bezier curves, for example "bezier(0.47,2.37,0.64,-1.01)", or can be defined by special cases of bezier curves, which in this library are "linear", "ease-in", "ease-out", "ease-in-out".
+Speed can be defined in miliseconds or pixels per second. "1000msec" defines total time of scroll to be 1 second, and "500px" defines average speed of 500 pixels per second.
+		</p>
+		<p class="tekst1">
+			<br>Four parameters defining cubic bezier curve are x and y coordinates of two control points (x1,y1,x2,y2). On web you can find interactive generators of bezier curves where you can play and design your own curves, like one here:
+		</p>
+		<a class="tekst1" href="https://cubic-bezier.com">https://cubic-bezier.com</a>
+		<p class="tekst1">
+			In practice, usually you want to use "ease-in" or "ease-in-out" curve. Usually you dont want to use linear curve, as it looks too mechanical and artificial.
+		</p>
+		<p class="tekst1">
+		<br>Now I will briefly explain functioning of my library. When class Skrol is initialized, browser first calculates n points of given bezier curves (default n = 100). Formula for bezier curve is "implicit" or parameterized, meaning you are given pair of points x(t) and y(t) for 0 &lt;= t &lt;= 1. What we need is y(x), so I use interpolation library I have written previously, to interpolate y as a function of x for calculated n points. This library I have written in previous animation project. It uses hermite cubic spline interpolation. Once this is done, it is possible to get y for any given x, where x will be time index between 0 and 100 (0 for start of scroll, 100 for end). y will give browser necessary offset for time index x.
+Now when visitor clicks on selected "button" / html element, computer starts scrolling using frame-by-frame animation. For each frame browser calculates time index and then it, calculates necessary scroll offset, and at the end it sets such offset (using window.scrollTo(0,offset)). 
+You can find code of this web site and library at:
+		</p>
+		<a class="tekst1" href="https://github.com/ICalculateThereforeIUnderstand/smoothScroll">https://github.com/ICalculateThereforeIUnderstand/smoothScroll</a>
 	</div>
     <div id="druga">
 	</div>
     <div id="treca">
-		<p id="natpis">Ides/neides, sve je OK, ziv sam i zdrav, i valjda je bog sa mnom.</p>
+		<p id="natpis">Ovo je nasa TARGET linija.</p>
 		<div id="klik2">
 			<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
